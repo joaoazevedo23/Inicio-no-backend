@@ -1,3 +1,5 @@
+//Conceitos do dia 01
+
 const exp = require("express")
 
 
@@ -37,6 +39,28 @@ Servidor.get('/soma/:a/:b', (req, res)=>{
     res.send(`A soma de ${a} + ${b} gera como única resposta possível o resultado ${respost}`)
 })
 
-Servidor.listen(5055, ()=>{
-    console.log("Esta ouvindo?")
+
+
+//Conceitos do dia 02
+
+Servidor.get('/bemvindo', (req, res)=>{
+    const nome = req.query.nome
+    res.send(`Olá ${nome}, seja bem vindo a minha API em construção!!`)
+})
+
+Servidor.get('/verificar', (req, res)=>{
+    const nome = req.query.nome
+    const idade = Number(req.query.idade)
+    
+    if(idade < 18){
+        res.send(`É mano ${nome}, você tem só ${idade} anos,e por isso é menor de idade`)
+    }
+    else{
+        res.send(`Parabéns ${nome}! Você sobreviveu até os ${idade} anos e é maior de idade`)
+    }
+})
+
+
+Servidor.listen(5030, ()=>{
+    console.log("Ouvindo, capitão! Quais são as ordens?")
 })
