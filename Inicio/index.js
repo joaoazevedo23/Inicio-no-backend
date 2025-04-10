@@ -1,9 +1,12 @@
 //Conceitos do dia 01 - Conteúdos iniciais
-
 const exp = require("express")
-
-
 const Servidor = exp()
+Servidor.use(exp.json())
+
+//Aula 03 - guardar ardados em um array
+const listaComDados = []
+
+
 
 Servidor.get('/', (req, res)=>{
     res.send('Bem vindo a API com Express')
@@ -120,6 +123,26 @@ Servidor.get('/avaliacao/:nome', (req, res)=>{ //Sistema que recebe 3 notas e ca
     }
 })
 
-Servidor.listen(5020, ()=>{ //Porta onde a API vai rodar
+Servidor.post('/cadastro', (req, res)=>{
+    const nome = req.body.nome
+    const turma = req.body.turma
+    const idade = req.body.idade
+    
+    const novoCadastro = {
+        nome,
+        turma,
+        idade
+    }
+
+    listaComDados.push(novoCadastro)
+
+    res.send(`Bem vindo(a), ${nome}! No meu sistema consta que você tem ${idade} anos e está no ${turma}. Salvo com sucesso!!`)
+})
+
+Servidor.get('/cadastros', (req, res)=>{
+    res.json(listaComDados)
+})
+
+Servidor.listen(5025, ()=>{ //Porta onde a API vai rodar
     console.log("Ouvindo, capitão! Quais são as ordens?")
 })
