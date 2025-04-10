@@ -1,4 +1,4 @@
-//Conceitos do dia 01
+//Conceitos do dia 01 - Conteúdos iniciais
 
 const exp = require("express")
 
@@ -119,7 +119,6 @@ Servidor.get('/avaliacao/:nome', (req, res)=>{ //Sistema que recebe 3 notas e ca
         res.send(`Negativo ${nome}, os valores devem ser notas de 0 a 100 somente`)
     }
 })
-
 
 Servidor.listen(5020, ()=>{ //Porta onde a API vai rodar
     console.log("Ouvindo, capitão! Quais são as ordens?")
