@@ -42,6 +42,12 @@ Servidor.get('/soma/:a/:b', (req, res)=>{
     res.send(`A soma de ${a} + ${b} gera como única resposta possível o resultado ${respost}`)
 })
 
+Servidor.get('/multiplicacao/:a/:b', (req, res)=>{
+    const a = Number(req.params.a)
+    const b = Number(req.params.b)
+    const m = a * b
+    res.send(`O valor desejado é ${m}`)
+})
 
 
 //Conceitos do dia 02
@@ -94,6 +100,16 @@ Servidor.get('/pontuacao/:nome', (req, res)=>{
         res.send(`Confira sua resposta ${nome}! Apenas valores entre 0 e 100 serão aceitos, e ${pontos} não é um deles`)
     }
 })
+
+// Mostrando que não é padrão o req res
+Servidor.get('/divisao', (a, b)=>{
+    const e = Number(a.query.e)
+    const c = Number(a.query.c)
+    const d = e/c
+
+    b.send(`O resultado é ${d}`)
+})
+
 
 Servidor.get('/avaliacao/:nome', (req, res)=>{ //Sistema que recebe 3 notas e calcula uma média
     const nome = req.params.nome
